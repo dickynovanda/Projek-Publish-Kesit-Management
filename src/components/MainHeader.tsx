@@ -222,10 +222,9 @@ export default function MainHeader() {
               <Link
                 href="/#daftar"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center gap-2 bg-[#1DCD9F] hover:bg-[#169976] text-[#000000] font-bold text-sm px-6 py-3 rounded-full shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-[#1DCD9F] hover:bg-[#169976] text-[#FFFFFF] font-bold text-sm px-6 py-3 rounded-full shadow-lg"
               >
                 <span>Daftar Sekarang</span>
-                <span className="text-base font-extrabold">↗</span>
               </Link>
             </div>
           </motion.div>
