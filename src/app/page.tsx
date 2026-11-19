@@ -21,19 +21,125 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-16">
           <div className="relative max-w-2xl">
             <motion.img src="/images/overlay_wayang.png" alt="" aria-hidden="true" className="pointer-events-none absolute left-[-12rem] top-[-1rem] z-0 h-[34rem] w-auto object-contain opacity-40 sm:left-[-8rem] sm:top-[-4rem]" initial={{ x: -220, opacity: 0 }} animate={{ x: 0, opacity: 0.4, rotate: [16, 24, 16] }} transition={{ x: { delay: 1.32, duration: 0.8, ease: 'easeOut' }, opacity: { delay: 1.32, duration: 0.8, ease: 'easeOut' }, rotate: { delay: 2.12, duration: 5, repeat: Infinity, ease: 'easeInOut' } }} style={{ transformOrigin: '50% 90%' }} />
-            <div className="relative z-10 flex gap-1 text-xs uppercase tracking-widest font-extrabold mb-4"><motion.span initial="hidden" animate="visible" custom={0} variants={wordStagger} className="text-[#FFFFFF]">KLUB &amp;</motion.span><motion.span initial="hidden" animate="visible" custom={1} variants={wordStagger} className="text-[#1DCD9F]">PUSAT LATIHAN RENANG</motion.span></div>
-            <h1 className="relative z-10 text-[2rem] sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-4 whitespace-nowrap" style={{ fontFamily: "'Lequire', sans-serif", color: '#FFFFFF', WebkitTextStroke: '0.1px #FFFFFF' }}><motion.span initial="hidden" animate="visible" custom={2} variants={wordStagger}>KeSiT</motion.span><span> </span><motion.span initial="hidden" animate="visible" custom={3} variants={wordStagger}>MAnagement</motion.span></h1>
-            <p className="relative z-10 text-2xl sm:text-3xl font-bold mb-6"><motion.span initial="hidden" animate="visible" custom={4} variants={wordStagger} className="inline-block text-[#1DCD9F]">Berani mulai.</motion.span><span> </span><motion.span initial="hidden" animate="visible" custom={5} variants={wordStagger} className="inline-block text-[#FFFFFF]">Terus melaju.</motion.span></p>
-            <p className="relative z-10 text-base sm:text-lg leading-relaxed mb-8 max-w-xl font-normal"><motion.span initial="hidden" animate="visible" custom={6} variants={wordStagger} className="inline-block text-[#FFFFFF]">Dari kayuhan pertama hingga lintasan prestasi.</motion.span><span> </span><motion.span initial="hidden" animate="visible" custom={7} variants={wordStagger} className="inline-block text-[#1DCD9F]">Belajar renang dengan pendampingan yang terarah.</motion.span></p>
-            <div className="relative z-10 flex flex-wrap items-center gap-4 mb-8"><motion.div initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.08, duration: 0.55, ease: 'easeOut' }}><Link href="#daftar" className="inline-flex items-center gap-2 bg-[#1DCD9F] hover:bg-[#169976] text-[#FFFFFF] font-extrabold text-base px-7 py-3.5 rounded-full shadow-lg shadow-[#1DCD9F]/30">Daftar Sekarang</Link></motion.div><motion.div initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.28, duration: 0.55, ease: 'easeOut' }}><Link href="#kontak" className="inline-flex items-center gap-2 bg-transparent hover:bg-[#FFFFFF]/10 text-[#FFFFFF] font-bold text-base px-7 py-3.5 rounded-full border border-[#FFFFFF]/20 transition-colors">Contact Us</Link></motion.div></div>
-            <div className="relative z-10 flex items-center gap-2.5 text-xs sm:text-sm text-[#FFFFFF] font-medium"><motion.span initial="hidden" animate="visible" custom={8} variants={wordStagger} className="text-[#1DCD9F]">≋</motion.span><motion.span initial="hidden" animate="visible" custom={9} variants={wordStagger}>Untuk pemula, perenang aktif, dan calon juara.</motion.span></div>
+            <div className="relative z-10 flex gap-1 text-xs uppercase tracking-widest font-extrabold mb-4">
+              <motion.span initial="hidden" animate="visible" custom={0} variants={wordStagger} className="text-[#FFFFFF]">KLUB &amp;
+              </motion.span>
+              <motion.span initial="hidden" animate="visible" custom={1} variants={wordStagger} className="text-[#1DCD9F]">PUSAT LATIHAN RENANG</motion.span>
+              </div>
+            <h1 className="relative z-10 text-[2rem] sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-4 whitespace-nowrap" style={{ fontFamily: "'Lequire', sans-serif", color: '#FFFFFF', WebkitTextStroke: '0.1px #FFFFFF' }}>
+              <motion.span initial="hidden" animate="visible" custom={2} variants={wordStagger}>KeSiT</motion.span>
+                <span> </span>
+              <motion.span initial="hidden" animate="visible" custom={3} variants={wordStagger}>MAnagement</motion.span>
+            </h1>
+            <p className="relative z-10 text-2xl sm:text-3xl font-bold mb-6">
+              <motion.span initial="hidden" animate="visible" custom={4} variants={wordStagger} className="inline-block text-[#1DCD9F]">Berani mulai.
+              </motion.span>
+              <span> </span>
+              <motion.span initial="hidden" animate="visible" custom={5} variants={wordStagger} className="inline-block text-[#FFFFFF]">Terus melaju.
+              </motion.span>
+            </p>
+            <p className="relative z-10 text-base sm:text-lg leading-relaxed mb-8 max-w-xl font-normal">
+              <motion.span initial="hidden" animate="visible" custom={6} variants={wordStagger} className="inline-block text-[#FFFFFF]">Dari kayuhan pertama hingga lintasan prestasi.</motion.span>
+                <span> </span>
+              <motion.span initial="hidden" animate="visible" custom={7} variants={wordStagger} className="inline-block text-[#1DCD9F]">Belajar renang dengan pendampingan yang terarah.</motion.span>
+            </p>
+            <div className="relative z-10 flex flex-wrap items-center gap-4 mb-8">
+              <motion.div initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.08, duration: 0.55, ease: 'easeOut' }}>
+                <Link href="#daftar" className="inline-flex items-center gap-2 bg-[#1DCD9F] hover:bg-[#169976] text-[#FFFFFF] font-extrabold text-base px-7 py-3.5 rounded-full shadow-lg shadow-[#1DCD9F]/30">Daftar Sekarang</Link>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.28, duration: 0.55, ease: 'easeOut' }}>
+                <Link href="#kontak" className="inline-flex items-center gap-2 bg-transparent hover:bg-[#FFFFFF]/10 text-[#FFFFFF] font-bold text-base px-7 py-3.5 rounded-full border border-[#FFFFFF]/20 transition-colors">Contact Us</Link>
+              </motion.div>
+            </div>
+            <div className="relative z-10 flex items-center gap-2.5 text-xs sm:text-sm text-[#FFFFFF] font-medium">
+              <motion.span initial="hidden" animate="visible" custom={8} variants={wordStagger} className="text-[#1DCD9F]">≋</motion.span>
+              <motion.span initial="hidden" animate="visible" custom={9} variants={wordStagger}>Untuk pemula, perenang aktif, dan calon juara.</motion.span>
+            </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none leading-none"><svg className="w-full h-16 sm:h-24 lg:h-32 text-[#FFFFFF] fill-current" preserveAspectRatio="none" viewBox="0 0 1440 120"><path d="M0,0 C480,110 960,110 1440,0 L1440,120 L0,120 Z" /></svg></div>
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none leading-none">
+          <svg className="w-full h-16 sm:h-24 lg:h-32 text-[#FFFFFF] fill-current" preserveAspectRatio="none" viewBox="0 0 1440 120">
+            <path d="M0,0 C480,110 960,110 1440,0 L1440,120 L0,120 Z" />
+          </svg>
+        </div>
       </section>
-      <section className="py-20 lg:py-28 bg-[#FFFFFF] relative" data-purpose="about-and-statistics" id="tentang"><div className="max-w-7xl mx-auto px-6"><div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start"><motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .6 }} className="lg:col-span-7 pr-0 lg:pr-8"><p className="text-xs uppercase font-extrabold tracking-wider mb-3">LEBIH DARI LATIHAN</p><h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6">Tumbuh percaya diri, satu kayuhan setiap hari.</h2><p className="text-base sm:text-lg leading-relaxed mb-8">Kesit Management adalah ruang belajar renang yang mengutamakan proses. Kami mempertemukan latihan teknik, kebiasaan disiplin, dan semangat kebersamaan untuk membantu setiap siswa menemukan potensinya.</p><Link href="/tentang-kami" className="font-bold">Kenali Kesit lebih dekat G��</Link></motion.div><motion.div initial={{ opacity: 0, scale: .94 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: .6, delay: .15 }} className="lg:col-span-5"><div className="bg-[#222222] text-white rounded-3xl p-8 sm:p-10 shadow-2xl"><p className="text-[11px] font-bold tracking-widest uppercase mb-8">SEMANGAT DALAM ANGKA</p><div className="grid grid-cols-3 gap-4 pb-8 border-b border-[#444]"><div><span className="block text-3xl font-extrabold mb-2">120+</span><span className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Siswa aktif</span></div><div><span className="block text-3xl font-extrabold mb-2">4</span><span className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Pelatih</span></div><div><span className="block text-3xl font-extrabold mb-2">18</span><span className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Medali</span></div></div><p className="text-xs sm:text-sm mt-6 leading-relaxed">Setiap progres berarti. Setiap pencapaian dimulai dari latihan yang konsisten.</p></div></motion.div></div></div></section>
-      <section className="py-16 lg:py-24 bg-white border-t" data-purpose="gallery-activities"><div className="max-w-7xl mx-auto px-6"><motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12"><p className="text-xs uppercase font-extrabold tracking-wider mb-2">CERITA DARI KOLAM</p><h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">Latihan serius. Kebersamaan tulus.</h2><p className="text-sm sm:text-base">Potret semangat siswa dan pelatih, di dalam maupun di luar lintasan.</p></motion.div><motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: .2 } } }} className="grid grid-cols-1 md:grid-cols-3 gap-8">{[['Dokumentasi2.JPG','Satu tim, banyak mimpi'],['Dokumentasi3.jpg','Langkah kecil, progres nyata'],['Dokumentasi4.jpg','Energi untuk terus melaju']].map(([image,title])=><motion.article key={image} variants={{ hidden:{opacity:0,y:30}, visible:{opacity:1,y:0,transition:{duration:.6}} }} className="group"><div className="rounded-3xl overflow-hidden mb-5 aspect-[4/3]"><img alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={`/images/${image}`} /></div><h3 className="text-lg font-bold mb-1">{title}</h3><p className="text-sm">Kebersamaan siswa &amp; pelatih</p></motion.article>)}</motion.div></div></section>
-      <section className="bg-black py-16 lg:py-20 text-white" id="daftar"><div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-8"><div><p className="text-xs uppercase font-extrabold tracking-widest text-[#1DCD9F] mb-2">LINTASANMU DIMULAI DI SINI</p><h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-3">Siap membuat kayuhan pertamamu?</h2><p className="text-sm sm:text-base">Pilih program yang sesuai, lalu mulai perjalanan renangmu bersama Kesit.</p></div><Link href="/layanan" className="bg-[#1DCD9F] text-black font-extrabold px-8 py-4 rounded-full">Lihat Layanan</Link></div></section>
+      <section className="py-20 lg:py-28 bg-[#FFFFFF] relative" data-purpose="about-and-statistics" id="tentang">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+            <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .6 }} className="lg:col-span-7 pr-0 lg:pr-8">
+              <p className="text-xs uppercase font-extrabold tracking-wider mb-3">LEBIH DARI LATIHAN
+              </p>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6">Tumbuh percaya diri, satu kayuhan setiap hari.
+                </h2>
+                  <p className="text-base sm:text-lg leading-relaxed mb-8">Kesit Management adalah ruang belajar renang yang mengutamakan proses. Kami mempertemukan latihan teknik, kebiasaan disiplin, dan semangat kebersamaan untuk membantu setiap siswa menemukan potensinya.
+                  </p>
+                    <Link href="/tentang-kami" className="font-bold">Kenali Kesit lebih dekat
+                    </Link>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: .94 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: .6, delay: .15 }} className="lg:col-span-5">
+              <div className="bg-[#222222] text-white rounded-3xl p-8 sm:p-10 shadow-2xl">
+                <p className="text-[11px] font-bold tracking-widest uppercase mb-8">SEMANGAT DALAM ANGKA</p>
+                  <div className="grid grid-cols-3 gap-4 pb-8 border-b border-[#444]">
+                    <div>
+                      <span className="block text-3xl font-extrabold mb-2">120+</span>
+                      <span className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Siswa aktif</span>
+                    </div>
+                    <div>
+                      <span className="block text-3xl font-extrabold mb-2">4</span>
+                      <span className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Pelatih</span>
+                    </div>
+                    <div>
+                      <span className="block text-3xl font-extrabold mb-2">18</span>
+                      <span className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Medali</span>
+                    </div>
+                  </div>
+                    <p className="text-xs sm:text-sm mt-6 leading-relaxed">Setiap progres berarti. Setiap pencapaian dimulai dari latihan yang konsisten.</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      <section className="py-16 lg:py-24 bg-white border-t" data-purpose="gallery-activities">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+            <p className="text-xs uppercase font-extrabold tracking-wider mb-2">CERITA DARI KOLAM</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">Latihan serius. Kebersamaan tulus.</h2>
+            <p className="text-sm sm:text-base">Potret semangat siswa dan pelatih, di dalam maupun di luar lintasan.</p>
+          </motion.div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: .2 } } }} className="grid grid-cols-1 md:grid-cols-3 gap-8">{[['Dokumentasi2.JPG','Satu tim, banyak mimpi'],['Dokumentasi3.jpg','Langkah kecil, progres nyata'],['Dokumentasi4.jpg','Energi untuk terus melaju']].map(([image,title])=>
+            <motion.article key={image} variants={{ hidden:{opacity:0,y:30}, visible:{opacity:1,y:0,transition:{duration:.6}} }} className="group">
+              <div className="rounded-3xl overflow-hidden mb-5 aspect-[4/3]">
+                <img alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={`/images/${image}`} />
+              </div>
+              <h3 className="text-lg font-bold mb-1">{title}</h3>
+              <p className="text-sm">Kebersamaan siswa &amp; pelatih</p>
+            </motion.article>)}
+          </motion.div>9
+        </div>
+      </section>
+      <section className="bg-black py-16 lg:py-20 text-white" id="daftar">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-8">
+          <div>
+            <p className="text-xs uppercase font-extrabold tracking-widest text-white mb-2">
+                LINTASANMU
+              <span> </span>
+              <span className="text-[#1DCD9F]">
+                DIMULAI DI SINI
+              </span>
+            </p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-[#1DCD9F] font-extrabold mb-3 leading-tight">
+                Siap membuat <span className="text-white">kayuhan pertamamu</span>?
+              </h2>
+            <p>
+              <span className="text-sm sm:text-base text-gray-300">Pilih program yang sesuai, </span>
+              <span className="text-sm sm:text-base text-[#1DCD9F] font-semibold">
+                dan mulai perjalananmu bersama Kesit Management.
+              </span>
+            </p>
+          </div>
+          <Link href="/layanan" className="bg-[#1DCD9F] text-black font-extrabold px-8 py-4 rounded-full">Lihat Layanan</Link>
+        </div>
+      </section>
     </main>
   );
 }
