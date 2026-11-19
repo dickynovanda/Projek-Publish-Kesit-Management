@@ -1,12 +1,20 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function MainFooter() {
   return (
     <footer className="relative bg-[#000000] text-[#FFFFFF] pt-20 pb-12 overflow-hidden" data-purpose="site-footer">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <img alt="" className="absolute inset-0 w-full h-full object-cover object-center opacity-65 filter brightness-95 contrast-105" src="/images/Dokumentasi1.jpg" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#000000]/60 to-transparent"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <motion.img alt="" src="/images/awan1.png" initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 2.4, duration: 0.7 }} className="absolute left-[-3rem] top-8 w-40 opacity-60 sm:w-56" />
+        <motion.img alt="" src="/images/awan1.png" initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} transition={{ delay: 2.4, duration: 0.7 }} className="absolute right-[-3rem] top-8 z-0 w-40 scale-x-[-1] opacity-50 sm:top-8 sm:w-56" />
+        <motion.img alt="" src="/images/WayangFooter.png" initial={{ x: -300, opacity: 0 }} animate={{ x: 0, opacity: 0.45, rotate: [22, 28, 22] }} style={{ transformOrigin: '50% 90%' }} transition={{ x: { delay: 1.7, duration: 0.8 }, opacity: { delay: 1.7, duration: 0.8 }, rotate: { delay: 2.5, duration: 4, repeat: Infinity, ease: 'easeInOut' } }} className="absolute bottom-0 left-[-7rem] z-20 w-64 sm:left-[-2rem] sm:w-80" />
+        <motion.img alt="" src="/images/WayangFooter.png" initial={{ x: 300, opacity: 0 }} animate={{ x: 0, opacity: 0.45, scaleX: -1, rotate: [22, 28, 22] }} style={{ transformOrigin: '50% 90%' }} transition={{ x: { delay: 1.7, duration: 0.8 }, opacity: { delay: 1.7, duration: 0.8 }, rotate: { delay: 2.5, duration: 4, repeat: Infinity, ease: 'easeInOut' } }} className="absolute bottom-0 right-[-7rem] z-20 w-64 sm:right-[-2rem] sm:w-80" />
+        <div className="absolute -bottom-14 left-1/2 z-10 w-60 -translate-x-1/2 sm:-bottom-20 sm:w-80">
+          <motion.img alt="" src="/images/Gununganbaru.png" initial={{ y: 250, opacity: 0 }} animate={{ y: 0, opacity: 0.7, x: [-8, 8, -8] }} transition={{ y: { duration: 0.9 }, opacity: { duration: 0.9 }, x: { delay: 0.9, duration: 4, repeat: Infinity, ease: 'easeInOut' } }} className="w-full" />
+        </div>
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16">
