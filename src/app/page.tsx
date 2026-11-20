@@ -1,10 +1,33 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
+
+function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
+  const ref = React.useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: false, amount: 0.8 });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (current) => `${Math.round(current)}${suffix}`);
+
+  useEffect(() => {
+    if (isInView) {
+      const animation = animate(count, value, { duration: 1.8, ease: 'easeOut' });
+      return () => animation.stop();
+    }
+    count.set(0);
+  }, [count, isInView, value]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+}
 
 export default function Home() {
+  const [counts, setCounts] = useState([0, 0, 0]);
+  useEffect(() => {
+    const timer = window.setInterval(() => setCounts((current) => current.map((value, index) => Math.min([120, 4, 18][index], value + Math.max(1, Math.ceil([120, 4, 18][index] / 40))))), 35);
+    return () => window.clearInterval(timer);
+  }, []);
+
   const wordStagger = {
     hidden: { opacity: 0, y: 18 },
     visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.6, ease: 'easeOut' as const } }),
@@ -67,33 +90,31 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
             <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .6 }} className="lg:col-span-7 pr-0 lg:pr-8">
-              <p className="text-xs uppercase font-extrabold tracking-wider mb-3">LEBIH DARI LATIHAN
-              </p>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6">Tumbuh percaya diri, satu kayuhan setiap hari.
-                </h2>
-                  <p className="text-base sm:text-lg leading-relaxed mb-8">Kesit Management adalah ruang belajar renang yang mengutamakan proses. Kami mempertemukan latihan teknik, kebiasaan disiplin, dan semangat kebersamaan untuk membantu setiap siswa menemukan potensinya.
-                  </p>
-                    <Link href="/tentang-kami" className="font-bold">Kenali Kesit lebih dekat
-                    </Link>
+              <motion.p initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6 }} className="text-xs uppercase font-extrabold tracking-wider mb-3">LEBIH DARI LATIHAN               </motion.p>
+                <motion.h2 initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.8, ease: 'easeOut' }} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6">Tumbuh percaya diri, satu kayuhan setiap hari.
+                </motion.h2>
+                  <motion.p initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }} className="text-base sm:text-lg leading-relaxed mb-8">Kesit Management adalah ruang belajar renang yang mengutamakan proses. Kami mempertemukan latihan teknik, kebiasaan disiplin, dan semangat kebersamaan untuk membantu setiap siswa menemukan potensinya.
+                  </motion.p>
+                    <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}><Link href="/tentang-kami" className="font-bold">Kenali Kesit lebih dekat                     </Link></motion.div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, scale: .94 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: .6, delay: .15 }} className="lg:col-span-5">
+            <motion.div initial={{ opacity: 0, scale: 0.75 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false }} transition={{ duration: 0.7, type: 'spring' }} className="lg:col-span-5">
               <div className="bg-[#222222] text-white rounded-3xl p-8 sm:p-10 shadow-2xl">
-                <p className="text-[11px] font-bold tracking-widest uppercase mb-8">SEMANGAT DALAM ANGKA</p>
+                <motion.p initial="hidden" whileInView="visible" viewport={{ once: false }} variants={wordStagger} custom={0} className="text-[11px] font-bold tracking-widest uppercase mb-8">SEMANGAT DALAM ANGKA</motion.p>
                   <div className="grid grid-cols-3 gap-4 pb-8 border-b border-[#444]">
                     <div>
-                      <span className="block text-3xl font-extrabold mb-2">120+</span>
-                      <span className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Siswa aktif</span>
+                      <motion.span initial={{ opacity: 0, scale: 0.4 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false }} transition={{ duration: 0.65, type: 'spring', stiffness: 260, damping: 14 }} className="block text-3xl font-extrabold mb-2"><Counter value={120} suffix="+" /></motion.span>
+                      <motion.span initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false }} transition={{ delay: 0.3, type: 'spring' }} className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Siswa aktif</motion.span>
                     </div>
                     <div>
-                      <span className="block text-3xl font-extrabold mb-2">4</span>
-                      <span className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Pelatih</span>
+                      <motion.span initial={{ opacity: 0, scale: 0.4 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false }} transition={{ duration: 0.65, delay: 0.1, type: 'spring', stiffness: 260, damping: 14 }} className="block text-3xl font-extrabold mb-2"><Counter value={4} /></motion.span>
+                      <motion.span initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false }} transition={{ delay: 0.4, type: 'spring' }} className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Pelatih</motion.span>
                     </div>
                     <div>
-                      <span className="block text-3xl font-extrabold mb-2">18</span>
-                      <span className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Medali</span>
+                      <motion.span initial={{ opacity: 0, scale: 0.4 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false }} transition={{ duration: 0.65, delay: 0.2, type: 'spring', stiffness: 260, damping: 14 }} className="block text-3xl font-extrabold mb-2"><Counter value={18} /></motion.span>
+                      <motion.span initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false }} transition={{ delay: 0.5, type: 'spring' }} className="bg-[#1DCD9F] text-black text-[11px] font-bold px-2.5 py-1 rounded-full">Medali</motion.span>
                     </div>
                   </div>
-                    <p className="text-xs sm:text-sm mt-6 leading-relaxed">Setiap progres berarti. Setiap pencapaian dimulai dari latihan yang konsisten.</p>
+                     <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }} transition={{ delay: 1, duration: 1 }} className="text-xs sm:text-sm mt-6 leading-relaxed">Setiap progres berarti. Setiap pencapaian dimulai dari latihan yang konsisten.</motion.p>
               </div>
             </motion.div>
           </div>
@@ -102,44 +123,33 @@ export default function Home() {
       <section className="py-16 lg:py-24 bg-white border-t" data-purpose="gallery-activities">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-            <p className="text-xs uppercase font-extrabold tracking-wider mb-2">CERITA DARI KOLAM</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">Latihan serius. Kebersamaan tulus.</h2>
-            <p className="text-sm sm:text-base">Potret semangat siswa dan pelatih, di dalam maupun di luar lintasan.</p>
+            <motion.p initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6 }} className="text-xs uppercase font-extrabold tracking-wider mb-2">CERITA DARI KOLAM</motion.p>
+              <motion.h2 initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.8, ease: 'easeOut' }} className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">Latihan serius. Kebersamaan tulus.</motion.h2>
+            <motion.p initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }} className="text-sm sm:text-base">Potret semangat siswa dan pelatih, di dalam maupun di luar lintasan.</motion.p>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: .2 } } }} className="grid grid-cols-1 md:grid-cols-3 gap-8">{[['Dokumentasi2.JPG','Satu tim, banyak mimpi'],['Dokumentasi3.jpg','Langkah kecil, progres nyata'],['Dokumentasi4.jpg','Energi untuk terus melaju']].map(([image,title])=>
-            <motion.article key={image} variants={{ hidden:{opacity:0,y:30}, visible:{opacity:1,y:0,transition:{duration:.6}} }} className="group">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: .18 } } }} className="grid grid-cols-1 md:grid-cols-3 gap-8">{[['Dokumentasi2.JPG','Satu tim, banyak mimpi'],['Dokumentasi3.jpg','Langkah kecil, progres nyata'],['Dokumentasi4.jpg','Energi untuk terus melaju']].map(([image,title])=>
+            <motion.article key={image} variants={{ hidden:{opacity:0,scale:0.92}, visible:{opacity:1,scale:1,transition:{duration:.8,ease:'easeOut'}} }} className="group will-change-transform">
               <div className="rounded-3xl overflow-hidden mb-5 aspect-[4/3]">
-                <img alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={`/images/${image}`} />
+                <img alt={title} className="w-full h-full object-cover transform-gpu group-hover:scale-105 transition-transform duration-500 ease-out" src={`/images/${image}`} />
               </div>
               <h3 className="text-lg font-bold mb-1">{title}</h3>
               <p className="text-sm">Kebersamaan siswa &amp; pelatih</p>
             </motion.article>)}
-          </motion.div>9
+          </motion.div>
         </div>
       </section>
       <section className="bg-black py-16 lg:py-20 text-white" id="daftar">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div>
-            <p className="text-xs uppercase font-extrabold tracking-widest text-white mb-2">
-                LINTASANMU
-              <span> </span>
-              <span className="text-[#1DCD9F]">
-                DIMULAI DI SINI
-              </span>
-            </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-[#1DCD9F] font-extrabold mb-3 leading-tight">
-                Siap membuat <span className="text-white">kayuhan pertamamu</span>?
-              </h2>
-            <p>
-              <span className="text-sm sm:text-base text-gray-300">Pilih program yang sesuai, </span>
-              <span className="text-sm sm:text-base text-[#1DCD9F] font-semibold">
-                dan mulai perjalananmu bersama Kesit Management.
-              </span>
-            </p>
+            <motion.p initial="hidden" whileInView="visible" viewport={{ once: false }} className="text-xs uppercase font-extrabold tracking-widest mb-2"><motion.span custom={0} variants={wordStagger}>LINTASANMU</motion.span><span> </span><motion.span custom={1} variants={wordStagger} className="text-[#1DCD9F]">DIMULAI DI SINI</motion.span></motion.p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-[#1DCD9F] font-extrabold mb-3 leading-tight"><motion.span initial="hidden" whileInView="visible" viewport={{ once: false }} custom={2} variants={wordStagger}>Siap membuat</motion.span><span> </span><motion.span initial="hidden" whileInView="visible" viewport={{ once: false }} custom={3} variants={wordStagger} className="text-white">kayuhan pertamamu</motion.span><motion.span initial="hidden" whileInView="visible" viewport={{ once: false }} custom={4} variants={wordStagger}>?</motion.span></h2>
+            <p><motion.span initial="hidden" whileInView="visible" viewport={{ once: false }} custom={5} variants={wordStagger} className="inline-block text-sm sm:text-base text-gray-300">Pilih program yang sesuai, </motion.span><motion.span initial="hidden" whileInView="visible" viewport={{ once: false }} custom={6} variants={wordStagger} className="inline-block text-sm sm:text-base text-[#1DCD9F] font-semibold">dan mulai perjalananmu bersama Kesit Management.</motion.span></p>
           </div>
-          <Link href="/layanan" className="bg-[#1DCD9F] text-black font-extrabold px-8 py-4 rounded-full">Lihat Layanan</Link>
+          <motion.div initial={{ opacity: 0, scale: 0.3 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: false, amount: 0.2 }} transition={{ delay: 1, duration: 0.8, type: 'spring', stiffness: 220, damping: 12 }}><Link href="/layanan" className="inline-block bg-[#1DCD9F] text-[#FFFFFF] font-extrabold px-8 py-4 rounded-full">Lihat Layanan</Link></motion.div>
         </div>
       </section>
     </main>
   );
 }
+
+
