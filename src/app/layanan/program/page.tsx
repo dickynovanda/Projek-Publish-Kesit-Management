@@ -1,7 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
 import React, { useRef } from 'react';
 import SlideRightIn from '@/components/SlideRightIn';
 
@@ -10,7 +8,6 @@ export default function ProgramPage() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const { clientWidth } = scrollRef.current;
       const offset = direction === 'left' ? -240 : 240;
       scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' });
     }
@@ -55,29 +52,19 @@ export default function ProgramPage() {
   ];
 
   return (
-    <div className="font-sans bg-[#FFFFFF] text-[#222222] antialiased selection:bg-[#1DCD9F] selection:text-[#000000] min-h-screen flex flex-col w-full overflow-x-hidden">
+    <div className="font-sans bg-transparent text-[#f3ecd8] antialiased selection:bg-[#adff5f] selection:text-[#000000] min-h-screen flex flex-col w-full overflow-x-hidden">
       {/* BEGIN: HeroAndHeader */}
-      <section className="relative bg-[#000000] h-[640px] sm:h-[640px] flex items-center pt-24 pb-28 overflow-hidden text-[#FFFFFF]" data-purpose="hero-section">
-      {/* Background Documentation Photo with Asymmetric Gradient (Brighter on Right) */}
-      <div className="absolute inset-0 z-0">
-        <img alt="Aqua Sprint Kesit Management" className="absolute inset-y-0 right-0 h-full w-[62%] object-cover object-[center_35%] filter brightness-[1.25] contrast-[1.05]" src="/images/Dokumentasi1.jpg" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/78 to-[#000000]/0"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/30"></div>
-      </div>
+      <section className="relative bg-transparent h-[640px] sm:h-[640px] flex items-center pt-24 pb-28 overflow-hidden text-[#f3ecd8]" data-purpose="hero-section">
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-16">
-           <motion.img src="/images/overlay_wayang.png" alt="" aria-hidden="true" className="pointer-events-none absolute left-[-4rem] top-[-4rem] z-0 h-[34rem] w-auto object-contain opacity-40" animate={{ rotate: [16, 24, 16] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }} style={{ transformOrigin: '50% 90%' }} />
           <SlideRightIn className="max-w-3xl">
-            <span className="text-[#1DCD9F] text-xs font-bold tracking-widest uppercase block mb-3">LAYANAN / PROGRAM</span>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-[#FFFFFF]">
+            <span className="text-[#adff5f] text-sm font-bold tracking-widest uppercase block mb-3">LAYANAN / PROGRAM</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-[#f3ecd8]">
               Paket latihan, tujuan yang jelas.
             </h1>
-            <p className="text-[#FFFFFF] text-sm sm:text-base md:text-lg max-w-2xl font-normal leading-relaxed">
+            <p className="text-[#f3ecd8] text-base md:text-lg max-w-2xl font-normal leading-relaxed">
               Pilih titik awalmu. Diskusikan kebutuhan dan ketersediaan jadwal dengan admin sebelum mendaftar.
             </p>
           </SlideRightIn>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none leading-none">
-          <svg className="w-full h-16 sm:h-24 lg:h-32 text-[#FFFFFF] fill-current" preserveAspectRatio="none" viewBox="0 0 1440 120"><path d="M0,0 C480,110 960,110 1440,0 L1440,120 L0,120 Z"></path></svg>
         </div>
       </section>
       {/* END: HeroAndHeader */}
@@ -86,21 +73,21 @@ export default function ProgramPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <span className="text-xs font-bold tracking-widest text-[#222222] uppercase">PILIHAN PROGRAM KESIT</span>
-            <h2 className="text-xl sm:text-3xl font-extrabold text-[#222222] mt-1">Geser untuk melihat program lainnya</h2>
+            <span className="text-sm font-bold tracking-widest text-[#e6e8df] uppercase">PILIHAN PROGRAM KESIT</span>
+            <h2 className="text-xl sm:text-3xl font-extrabold text-[#f3ecd8] mt-1">Geser untuk melihat program lainnya</h2>
           </div>
           <div className="flex gap-3 self-end sm:self-auto">
             <button
               onClick={() => scroll('left')}
               aria-label="Scroll left"
-              className="w-10 h-10 rounded-full border border-[#222222] flex items-center justify-center hover:bg-[#1DCD9F] hover:border-[#1DCD9F] hover:text-[#000000] transition"
+              className="w-10 h-10 rounded-full border border-[#3b4432] flex items-center justify-center hover:bg-[#adff5f] hover:border-[#adff5f] hover:text-[#000000] transition"
             >
               ←
             </button>
             <button
               onClick={() => scroll('right')}
               aria-label="Scroll right"
-              className="w-10 h-10 rounded-full border border-[#222222] flex items-center justify-center hover:bg-[#1DCD9F] hover:border-[#1DCD9F] hover:text-[#000000] transition"
+              className="w-10 h-10 rounded-full border border-[#3b4432] flex items-center justify-center hover:bg-[#adff5f] hover:border-[#adff5f] hover:text-[#000000] transition"
             >
               →
             </button>
@@ -116,25 +103,25 @@ export default function ProgramPage() {
             {programs.map((prog, index) => (
               <div
                 key={index}
-                className="min-w-[220px] max-w-[220px] flex-shrink-0 bg-[#FFFFFF] rounded-2xl p-3.5 border border-[#1DCD9F] shadow-sm flex flex-col justify-between snap-start"
+                className="min-w-[220px] max-w-[220px] flex-shrink-0 bg-transparent rounded-2xl p-3.5 border border-[#adff5f] shadow-sm flex flex-col justify-between snap-start"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="bg-[#1DCD9F] text-[#000000] text-[10px] font-bold px-2 py-0.5 rounded-full">{prog.sessions}</span>
+                    <span className="bg-[#adff5f] text-[#000000] text-sm font-bold px-2 py-0.5 rounded-full">{prog.sessions}</span>
                   </div>
-                  <h3 className="text-sm font-bold text-[#222222] mb-2">{prog.title}</h3>
-                  <div className="bg-[#000000] text-[#FFFFFF] p-3 rounded-xl mb-3">
-                    <div className="text-base font-extrabold text-[#1DCD9F]">{prog.price}</div>
-                    <div className="text-[9px] text-[#222222] mt-0.5">per paket latihan</div>
+                  <h3 className="text-sm font-bold text-[#f3ecd8] mb-2">{prog.title}</h3>
+                  <div className="bg-transparent text-[#f3ecd8] p-3 rounded-xl mb-3">
+                    <div className="text-base font-extrabold text-[#adff5f]">{prog.price}</div>
+                    <div className="text-sm leading-relaxed text-[#e6e8df] mt-0.5">per paket latihan</div>
                   </div>
-                  <p className="text-[10px] text-[#222222] mb-3 font-medium">{prog.desc}</p>
-                  <ul className="space-y-1.5 text-[10px] text-[#222222] mb-4 font-medium">
+                  <p className="text-base leading-relaxed text-[#e6e8df] mb-3 font-medium">{prog.desc}</p>
+                  <ul className="space-y-1.5 text-base leading-relaxed text-[#e6e8df] mb-4 font-medium">
                     {prog.features.map((feat, fIdx) => (
                       <li key={fIdx}>✓ {feat}</li>
                     ))}
                   </ul>
                 </div>
-                <a className="inline-flex items-center justify-center bg-[#1DCD9F] hover:bg-[#169976] text-[#000000] text-[10px] font-bold px-4 py-1.5 rounded-full transition" href="https://wa.me/62XXXXXXXXXXX" target="_blank" rel="noopener noreferrer">
+                <a className="inline-flex items-center justify-center bg-[#adff5f] hover:bg-[#c4ff8d] text-[#000000] text-sm font-bold px-4 py-1.5 rounded-full transition" href="https://wa.me/62XXXXXXXXXXX" target="_blank" rel="noopener noreferrer">
                   Hubungi Admin ↗
                 </a>
               </div>

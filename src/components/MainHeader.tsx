@@ -1,235 +1,99 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+
+const navItems = [
+  { name: 'Beranda', href: '/' },
+  { name: 'Tentang Kami', href: '/tentang-kami' },
+  { name: 'Layanan', href: '/layanan' },
+  { name: 'Prestasi', href: '/prestasi' },
+];
+
+const services = [
+  { name: 'Semua Layanan', href: '/layanan' },
+  { name: 'Pelatih', href: '/layanan/pelatih' },
+  { name: 'Program', href: '/layanan/program' },
+  { name: 'Tempat Latihan', href: '/layanan/tempat' },
+];
 
 export default function MainHeader() {
   const pathname = usePathname();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileLayananOpen, setMobileLayananOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const navItems = [
-    { name: 'Beranda', href: '/' },
-    { name: 'Tentang Kami', href: '/tentang-kami' },
-    { name: 'Layanan', href: '/layanan', hasDropdown: true },
-    { name: 'Prestasi', href: '/prestasi' },
-  ];
+  const closeMenus = () => {
+    setMobileMenuOpen(false);
+    setDropdownOpen(false);
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#000000]/85 backdrop-blur-md border-b border-[#FFFFFF]/10 shadow-lg">
-      <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group" data-purpose="site-logo">
-          <img alt="Logo Kesit" className="h-14 w-14 object-contain" src="/images/Logo Kesit 1.png" />
-          <img alt="Kesit Management" className="h-12 w-auto max-w-[210px] object-contain" src="/images/Logo Kesit 2.png" />
-        </Link>
-
-        {/* Center Navigation Links (Desktop) */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium relative" data-purpose="primary-navigation">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href || (item.hasDropdown && pathname.startsWith('/layanan'));
-
-            if (item.hasDropdown) {
-              return (
-                <div
-                  key={item.href}
-                  className="relative py-1"
-                  onMouseEnter={() => setDropdownOpen(true)}
-                  onMouseLeave={() => setDropdownOpen(false)}
-                >
-                  <Link
-                    href={item.href}
-                    className={`flex items-center gap-1.5 transition-colors ${
-                      isActive ? 'text-[#FFFFFF]' : 'text-[#ffffff] hover:text-[#1DCD9F]'
-                    }`}
-                  >
-                    <span>{item.name}</span>
-                    <svg className={`w-4 h-4 text-[#222222] transition-transform ${dropdownOpen ? 'rotate-180 text-[#FFFFFF]' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
-                    </svg>
-                  </Link>
-
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#1DCD9F]"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-
-                  {/* Submenu Dropdown */}
-                  <AnimatePresence>
-                    {dropdownOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 w-52 bg-[#222222] border border-[#222222] rounded-2xl shadow-2xl py-3 z-50 flex flex-col"
-                      >
-                        <Link
-                          href="/layanan/pelatih"
-                          className="px-5 py-2.5 text-xs font-semibold text-[#FFFFFF] hover:text-[#000000] hover:bg-[#1DCD9F] transition-colors"
-                        >
-                          Pelatih
-                        </Link>
-                        <Link
-                          href="/layanan/program"
-                          className="px-5 py-2.5 text-xs font-semibold text-[#FFFFFF] hover:text-[#000000] hover:bg-[#1DCD9F] transition-colors"
-                        >
-                          Program
-                        </Link>
-                        <Link
-                          href="/layanan/tempat"
-                          className="px-5 py-2.5 text-xs font-semibold text-[#FFFFFF] hover:text-[#000000] hover:bg-[#1DCD9F] transition-colors"
-                        >
-                          Tempat Latihan
-                        </Link>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            }
-
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`relative py-1 transition-colors ${
-                  isActive ? 'text-[#FFFFFF]' : 'text-[#FFFFFF] hover:text-[#1DCD9F]'
-                }`}
-              >
-                {item.name}
-                {isActive && (
-                  <motion.div
-                    layoutId="activeIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#1DCD9F]"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* CTA Register Button Header (Desktop) & Hamburger (Mobile) */}
-        <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/#daftar" className="inline-flex items-center gap-2 bg-[#1DCD9F] hover:bg-[#169976] text-[#FFFFFF] font-bold text-sm px-6 py-2.5 rounded-full shadow-lg shadow-[#1DCD9F]/20">
-                <span>Daftar Sekarang</span>
-              </Link>
-            </motion.div>
+    <header className="relative z-50" onKeyDown={(event) => { if (event.key === 'Escape') closeMenus(); }}>
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-[#adff5f] focus:p-4 focus:text-black">Lewati navigasi</a>
+      <div className="bg-black text-white">
+        <div className="site-container flex min-h-12 items-center justify-between gap-4 py-3 lg:pl-[360px]">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] sm:text-sm">BEYOND THE LIMIT</p>
+          <div className="flex items-center gap-5 text-[#adff5f]" role="group" aria-label="Media sosial KESIT">
+            <span role="img" aria-label="Facebook" title="Facebook — tautan akun segera tersedia">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.026 4.388 11.021 10.125 11.927v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971h-1.513c-1.49 0-1.956.931-1.956 1.887v2.263h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.099 24 12.073Z" /></svg>
+            </span>
+            <span role="img" aria-label="TikTok" title="TikTok — tautan akun segera tersedia">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 0h-4.1v16.4a3.1 3.1 0 1 1-2.7-3.1V9.1a7.3 7.3 0 1 0 6.8 7.3V8.1A10 10 0 0 0 22 9.7V5.6A5.6 5.6 0 0 1 16.6 0Z" /></svg>
+            </span>
+            <span role="img" aria-label="Instagram" title="Instagram — tautan akun segera tersedia">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>
+            </span>
           </div>
-
-          {/* Mobile Hamburger Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-            className="md:hidden text-[#FFFFFF] p-2 focus:outline-none"
-          >
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+        </div>
+      </div>
+      <div className="border-b border-[#adff5f]/30 bg-[#1c2119] text-[#f3ecd8]">
+        <div className="site-container relative flex min-h-24 items-center justify-between gap-4 lg:min-h-24 lg:pl-[360px]">
+          <Link href="/" onClick={closeMenus} aria-label="Kesit Management — Beranda" className="flex items-center gap-2 bg-black px-3 py-3 sm:gap-3 sm:px-4 lg:absolute lg:left-8 lg:top-[-48px] lg:h-[180px] lg:w-[290px] lg:flex-col lg:justify-center lg:gap-2 lg:rounded-b-[36px] lg:px-8 lg:shadow-xl">
+            <span className="relative block h-12 w-12 shrink-0 overflow-hidden lg:h-16 lg:w-16">
+              <img alt="" width={1280} height={1280} className="h-full w-full scale-[1.7] object-contain" src="/images/logo-kesit-hijau.png" />
+            </span>
+            <img alt="KESIT BEYOND" width={2000} height={645} className="h-12 w-36 object-contain lg:h-14 lg:w-48" src="/images/logo-kesit-beyond.png" />
+          </Link>
+          <nav aria-label="Navigasi utama" className="hidden flex-1 items-center justify-between gap-5 lg:flex">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href || (item.href === '/layanan' && pathname.startsWith('/layanan/'));
+              return item.href === '/layanan' ? (
+                <div key={item.href} className="relative" onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setDropdownOpen(false); }}>
+                  <button type="button" aria-expanded={dropdownOpen} aria-controls="desktop-services" onClick={() => setDropdownOpen(!dropdownOpen)} className={`flex items-center gap-3 border-b-2 py-3 text-sm font-bold uppercase tracking-wide ${isActive ? 'border-[#adff5f] text-[#adff5f]' : 'border-transparent hover:border-[#adff5f]/50'}`}>
+                    Layanan <span aria-hidden="true" className={`text-xs transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}>⌄</span>
+                  </button>
+                  {dropdownOpen && (
+                    <div id="desktop-services" className="absolute left-0 top-full mt-3 w-56 border-t-4 border-[#adff5f] bg-[#20241c] py-2 shadow-xl">
+                      {services.map((service) => <Link key={service.href} href={service.href} onClick={closeMenus} className="block px-5 py-3 text-sm font-semibold hover:bg-[#adff5f] hover:text-black">{service.name}</Link>)}
+                    </div>
+                  )}
+                </div>
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+                <Link key={item.href} href={item.href} onClick={closeMenus} aria-current={isActive ? 'page' : undefined} className={`border-b-2 py-3 text-sm font-bold uppercase tracking-wide ${isActive ? 'border-[#adff5f] text-[#adff5f]' : 'border-transparent hover:border-[#adff5f]/50'}`}>{item.name}</Link>
+              );
+            })}
+            <Link href="/#daftar" className="inline-flex items-center gap-4 bg-[#adff5f] px-5 py-3.5 text-sm font-bold uppercase tracking-wide text-black transition-colors hover:bg-[#c3ff8a]">Bergabung <span aria-hidden="true">↗</span></Link>
+          </nav>
+          <button type="button" aria-label={mobileMenuOpen ? 'Tutup menu' : 'Buka menu'} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="flex h-11 w-11 shrink-0 items-center justify-center border border-[#adff5f]/40 text-[#adff5f] lg:hidden">
+            <svg aria-hidden="true" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d={mobileMenuOpen ? 'M6 6l12 12M6 18L18 6' : 'M3 6h18M3 12h18M3 18h18'} /></svg>
           </button>
         </div>
       </div>
-
-      {/* Mobile Menu Dropdown / Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#000000] border-b border-[#FFFFFF]/10 px-6 py-6 flex flex-col gap-4 shadow-2xl"
-          >
-            {navItems.map((item) => {
-              const isActive = pathname === item.href || (item.hasDropdown && pathname.startsWith('/layanan'));
-
-              if (item.hasDropdown) {
-                return (
-                  <div key={item.href} className="flex flex-col">
-                    <div className="flex items-center justify-between py-2">
-                      <Link
-                        href={item.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={`text-base font-semibold ${isActive ? 'text-[#1DCD9F]' : 'text-[#FFFFFF]'}`}
-                      >
-                        {item.name}
-                      </Link>
-                      <button
-                        onClick={() => setMobileLayananOpen(!mobileLayananOpen)}
-                        className="p-2 text-[#222222]"
-                      >
-                        <svg className={`w-4 h-4 transition-transform ${mobileLayananOpen ? 'rotate-180 text-[#FFFFFF]' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
-                        </svg>
-                      </button>
-                    </div>
-
-                    {/* Mobile Submenu */}
-                    {mobileLayananOpen && (
-                      <div className="pl-4 flex flex-col gap-2.5 pt-2 border-l border-[#FFFFFF]/10 my-1">
-                        <Link
-                          href="/layanan/pelatih"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="text-sm text-[#222222] hover:text-[#1DCD9F] py-1"
-                        >
-                          • Pelatih
-                        </Link>
-                        <Link
-                          href="/layanan/program"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="text-sm text-[#222222] hover:text-[#1DCD9F] py-1"
-                        >
-                          • Program
-                        </Link>
-                        <Link
-                          href="/layanan/tempat"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="text-sm text-[#222222] hover:text-[#1DCD9F] py-1"
-                        >
-                          • Tempat Latihan
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`text-base font-semibold py-2 ${isActive ? 'text-[#1DCD9F]' : 'text-[#FFFFFF]'}`}
-                >
-                  {item.name}
-                </Link>
-              );
-            })}
-
-            <div className="pt-4 border-t border-[#FFFFFF]/10 flex flex-col">
-              <Link
-                href="/#daftar"
-                onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center gap-2 bg-[#1DCD9F] hover:bg-[#169976] text-[#FFFFFF] font-bold text-sm px-6 py-3 rounded-full shadow-lg"
-              >
-                <span>Daftar Sekarang</span>
-              </Link>
+      {mobileMenuOpen && (
+        <nav id="mobile-navigation" aria-label="Navigasi seluler" className="absolute left-0 right-0 border-t border-white/20 bg-black px-6 py-6 text-white shadow-xl lg:hidden">
+          {navItems.map((item) => (
+            <div key={item.href}>
+              <div className="flex items-center justify-between">
+                <Link href={item.href} onClick={closeMenus} aria-current={pathname === item.href ? 'page' : undefined} className="block py-3 font-semibold hover:text-[#adff5f]">{item.name}</Link>
+                {item.href === '/layanan' && <button type="button" aria-label="Tampilkan submenu layanan" aria-expanded={dropdownOpen} aria-controls="mobile-services" onClick={() => setDropdownOpen(!dropdownOpen)} className="h-11 w-11 text-[#adff5f]">{dropdownOpen ? '−' : '+'}</button>}
+              </div>
+              {item.href === '/layanan' && dropdownOpen && <div id="mobile-services" className="mb-3 border-l border-[#adff5f] pl-5">{services.slice(1).map((service) => <Link key={service.href} href={service.href} onClick={closeMenus} className="block py-3 text-base text-[#f3ecd8] hover:text-[#adff5f]">{service.name}</Link>)}</div>}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ))}
+          <Link href="/#daftar" onClick={closeMenus} className="mt-4 block bg-[#adff5f] px-5 py-4 text-center text-sm font-bold text-black">Daftar Sekarang ↗</Link>
+        </nav>
+      )}
     </header>
   );
 }
