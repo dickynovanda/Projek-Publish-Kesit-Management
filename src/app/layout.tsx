@@ -6,6 +6,7 @@ import './globals.css';
 import MainHeader from '@/components/MainHeader';
 import MainFooter from '@/components/MainFooter';
 import PageTransition from '@/components/PageTransition';
+import KesitIntro from '@/components/KesitIntro';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="id" className={plusJakartaSans.variable}>
       <body className="font-sans bg-[#171916] text-[#f3ecd8] antialiased selection:bg-[#adff5f] selection:text-[#000000]">
+        <KesitIntro />
         <div className="app-shell">
           <div className="relative z-50 shrink-0">
             <MainHeader />
@@ -58,3 +60,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+

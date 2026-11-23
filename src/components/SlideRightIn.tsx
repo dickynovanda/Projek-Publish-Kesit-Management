@@ -15,3 +15,6 @@ export default function SlideRightIn({ children, className = '' }: { children: R
     </motion.div>
   );
 }
+
+
+

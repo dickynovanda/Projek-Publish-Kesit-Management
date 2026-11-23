@@ -43,7 +43,7 @@ export default function Home() {
           <div className="ml-auto w-full max-w-md lg:pb-2">
             <p className="text-base leading-relaxed text-[#e6e8df] sm:text-lg">KESIT BEYOND, langkah yang selalu punya arah. Kami mendampingi perjalanan di airmu—dari belajar dasar hingga berani tampil di lintasan kecepatan.</p>
             <div className="mt-7 flex flex-wrap items-center gap-5">
-              <Link href="#daftar" className="inline-flex items-center gap-6 bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Mulai Bersama Kesit</Link>
+              <Link href="#daftar" className="inline-flex items-center gap-6 rounded-3xl bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Mulai Bersama Kesit</Link>
 
             </div>
           </div>
@@ -124,9 +124,12 @@ export default function Home() {
             <h2 id="register-title" className="text-4xl font-medium leading-[1.1] tracking-[-0.05em] sm:text-6xl">Siap membuat<br />kayuhan pertamamu?</h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#e6e8df]">Pilih program yang sesuai dan mulai perjalananmu bersama Kesit Management.</p>
           </div>
-          <Link href="/layanan" className="inline-flex w-fit shrink-0 items-center gap-12 bg-[#adff5f] px-7 py-5 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Lihat Layanan</Link>
+          <Link href="/layanan" className="inline-flex w-fit shrink-0 items-center gap-12 rounded-3xl bg-[#adff5f] px-7 py-5 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Lihat Layanan</Link>
         </div>
       </section>
     </main>
   );
 }
+
+
+

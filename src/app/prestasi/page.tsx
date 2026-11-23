@@ -23,7 +23,10 @@ export default function PrestasiPage() {
           ))}
         </div>
       </section>
-      <section className="bg-transparent px-6 py-16 text-center text-[#f3ecd8]"><h2 className="text-3xl font-extrabold">Siap menulis cerita renangmu?</h2><Link href="/layanan" className="mt-6 inline-block rounded-full bg-[#adff5f] hover:bg-[#c4ff8d] px-6 py-3 font-bold text-[#000000] transition-colors">Lihat Layanan</Link></section>
+      <section className="bg-transparent px-6 py-16 text-center text-[#f3ecd8]"><h2 className="text-3xl font-extrabold">Siap menulis cerita renangmu?</h2><Link href="/layanan" className="mt-6 inline-block rounded-full rounded-3xl bg-[#adff5f] hover:bg-[#c4ff8d] px-6 py-3 font-bold text-[#000000] transition-colors">Lihat Layanan</Link></section>
     </main>
   );
 }
+
+
+

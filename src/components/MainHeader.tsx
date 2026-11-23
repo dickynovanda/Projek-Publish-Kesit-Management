@@ -70,10 +70,11 @@ export default function MainHeader() {
                   )}
                 </div>
               ) : (
+
                 <Link key={item.href} href={item.href} onClick={closeMenus} aria-current={isActive ? 'page' : undefined} className={`border-b-2 py-3 text-sm font-bold uppercase tracking-wide ${isActive ? 'border-[#adff5f] text-[#adff5f]' : 'border-transparent hover:border-[#adff5f]/50'}`}>{item.name}</Link>
               );
             })}
-            <Link href="/#daftar" className="inline-flex items-center gap-4 bg-[#adff5f] px-5 py-3.5 text-sm font-bold uppercase tracking-wide text-black transition-colors hover:bg-[#c3ff8a]">Bergabung</Link>
+            <Link href="/#daftar" className="inline-flex items-center gap-4 rounded-3xl bg-[#adff5f] px-5 py-3.5 text-sm font-bold uppercase tracking-wide text-black transition-colors hover:bg-[#c3ff8a]">Bergabung</Link>
           </nav>
           <button type="button" aria-label={mobileMenuOpen ? 'Tutup menu' : 'Buka menu'} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="flex h-11 w-11 shrink-0 items-center justify-center border border-[#adff5f]/40 text-[#adff5f] lg:hidden">
             <svg aria-hidden="true" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d={mobileMenuOpen ? 'M6 6l12 12M6 18L18 6' : 'M3 6h18M3 12h18M3 18h18'} /></svg>
@@ -91,9 +92,12 @@ export default function MainHeader() {
               {item.href === '/layanan' && dropdownOpen && <div id="mobile-services" className="mb-3 border-l border-[#adff5f] pl-5">{services.slice(1).map((service) => <Link key={service.href} href={service.href} onClick={closeMenus} className="block py-3 text-base text-[#f3ecd8] hover:text-[#adff5f]">{service.name}</Link>)}</div>}
             </div>
           ))}
-          <Link href="/#daftar" onClick={closeMenus} className="mt-4 block bg-[#adff5f] px-5 py-4 text-center text-sm font-bold text-black">Daftar Sekarang ↗</Link>
+          <Link href="/#daftar" onClick={closeMenus} className="mt-4 block rounded-3xl bg-[#adff5f] px-5 py-4 text-center text-sm font-bold text-black">Daftar Sekarang</Link>
         </nav>
       )}
     </header>
   );
 }
+
+
+
