@@ -34,8 +34,8 @@ export default function TentangKamiPage() {
             <h1 id="about-title" className="mt-6 max-w-2xl text-4xl font-extrabold leading-[1.1] tracking-[-0.04em] sm:text-5xl lg:text-6xl">Tumbuh bersama olahraga, bergerak menuju <span className="text-[#adff5f]">prestasi.</span></h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#e6e8df] sm:text-lg">Kami mendukung perjalanan perenang melalui pembinaan renang dan menghadirkan kompetisi yang tertata, sportif, serta berkesan.</p>
             <div className="mt-8 flex flex-wrap items-center gap-6">
-              <Link href="#layanan-kesit" className="inline-flex items-center gap-5 bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff8d]">Jelajahi layanan <span aria-hidden="true">↘</span></Link>
-              <Link href="#cerita-kesit" className="border-b border-[#f3ecd8]/60 pb-2 text-sm font-semibold">Cerita kami <span aria-hidden="true">→</span></Link>
+              <Link href="#layanan-kesit" className="inline-flex items-center gap-5 bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff8d]">Jelajahi layanan</Link>
+              <Link href="#cerita-kesit" className="border-b border-[#f3ecd8]/60 pb-2 text-sm font-semibold">Cerita kami</Link>
             </div>
           </div>
           <figure className="relative overflow-hidden rounded-3xl border border-[#adff5f]/25 bg-[#171916]">
@@ -99,7 +99,7 @@ export default function TentangKamiPage() {
             <h2 id="contact-title" className="text-3xl font-bold tracking-tight sm:text-4xl">Siap tumbuh bersama KESIT?</h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-[#e6e8df]">Tanyakan program renang atau rencana kegiatan kompetisi kepada tim kami.</p>
           </div>
-          <Link href="#kontak" className="inline-flex w-fit shrink-0 items-center gap-5 bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff8d]">Hubungi tim KESIT <span aria-hidden="true">↗</span></Link>
+          <Link href="#kontak" className="inline-flex w-fit shrink-0 items-center gap-5 bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff8d]">Hubungi tim KESIT</Link>
         </div>
       </section>
     </main>

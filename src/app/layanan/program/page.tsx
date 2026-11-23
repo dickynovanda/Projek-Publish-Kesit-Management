@@ -122,7 +122,7 @@ export default function ProgramPage() {
                   </ul>
                 </div>
                 <a className="inline-flex items-center justify-center bg-[#adff5f] hover:bg-[#c4ff8d] text-[#000000] text-sm font-bold px-4 py-1.5 rounded-full transition" href="https://wa.me/62XXXXXXXXXXX" target="_blank" rel="noopener noreferrer">
-                  Hubungi Admin ↗
+                  Hubungi Admin
                 </a>
               </div>
             ))}

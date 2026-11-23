@@ -43,7 +43,7 @@ export default function Home() {
           <div className="ml-auto w-full max-w-md lg:pb-2">
             <p className="text-base leading-relaxed text-[#e6e8df] sm:text-lg">KESIT BEYOND, langkah yang selalu punya arah. Kami mendampingi perjalanan di airmu—dari belajar dasar hingga berani tampil di lintasan kecepatan.</p>
             <div className="mt-7 flex flex-wrap items-center gap-5">
-              <Link href="#daftar" className="inline-flex items-center gap-6 bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Mulai Bersama Kesit <span aria-hidden="true">↗</span></Link>
+              <Link href="#daftar" className="inline-flex items-center gap-6 bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Mulai Bersama Kesit</Link>
 
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function Home() {
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-[#adff5f] sm:text-sm">Di dalam air, kita bertumbuh.</p>
               <p className="max-w-xl text-2xl font-medium leading-tight tracking-tight sm:text-4xl">Satu kayuhan lebih dekat<br />dengan versi terbaikmu.</p>
             </div>
-            <Link href="/layanan/program" className="inline-flex w-fit items-center gap-6 border-b border-[#f3ecd8]/60 pb-2 text-sm font-semibold">Jelajahi Program <span aria-hidden="true">↗</span></Link>
+            <Link href="/layanan/program" className="inline-flex w-fit items-center gap-6 border-b border-[#f3ecd8]/60 pb-2 text-sm font-semibold">Jelajahi Program</Link>
           </figcaption>
         </figure>
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#f3ecd8]/20 py-5 text-sm font-semibold uppercase tracking-[0.16em] sm:text-sm">
@@ -75,14 +75,14 @@ export default function Home() {
 
       <section id="tentang" className="site-container py-10 sm:py-16" aria-labelledby="about-title">
         <div className="grid gap-8 lg:grid-cols-[1fr_2fr] lg:gap-16">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#adff5f]">01 / Mengenal Kesit</p>
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#adff5f]">1. Mengenal Kesit</p>
           <div>
             <h2 id="about-title" className="max-w-4xl text-3xl font-medium leading-[1.15] tracking-[-0.04em] sm:text-5xl">Lebih dari latihan.<br />Ruang untuk tumbuh percaya diri.</h2>
             <div className="mt-7 grid gap-6 md:grid-cols-2 md:gap-10">
               <p className="text-base leading-relaxed text-[#e6e8df]">Kesit Beyond hadir untuk membantu setiap perenang tumbuh, dari mengenal air hingga mengembangkan kemampuan di lintasan. Kami memadukan latihan teknik, kedisiplinan, dan suasana belajar yang menyenangkan.</p>
               <div>
                 <p className="text-base leading-relaxed text-[#e6e8df]">Melalui pendampingan yang terarah, kami mendukung setiap siswa untuk berani mencoba, membangun percaya diri, dan meraih kemajuan sesuai kemampuannya.</p>
-                <Link href="/tentang-kami" className="mt-6 inline-flex items-center gap-5 border-b border-[#f3ecd8]/60 pb-2 text-sm font-bold">Kenali Kesit lebih dekat <span aria-hidden="true">↗</span></Link>
+                <Link href="/tentang-kami" className="mt-6 inline-flex items-center gap-5 border-b border-[#f3ecd8]/60 pb-2 text-sm font-bold">Kenali Kesit lebih dekat</Link>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function Home() {
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#adff5f] mb-5">02 / Cerita dari Kolam</p>
             <h2 id="gallery-title" className="text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-5xl">Latihan serius.<br />Kebersamaan tulus.</h2>
           </div>
-          <Link href="/prestasi" className="inline-flex w-fit items-center gap-5 border-b border-[#f3ecd8]/60 pb-2 text-sm font-bold">Lihat Prestasi <span aria-hidden="true">↗</span></Link>
+          <Link href="/prestasi" className="inline-flex w-fit items-center gap-5 border-b border-[#f3ecd8]/60 pb-2 text-sm font-bold">Lihat Prestasi</Link>
         </div>
         <div className="grid gap-9 md:grid-cols-3 md:gap-6">
           {gallery.map(({ image, title, category }) => (
@@ -124,7 +124,7 @@ export default function Home() {
             <h2 id="register-title" className="text-4xl font-medium leading-[1.1] tracking-[-0.05em] sm:text-6xl">Siap membuat<br />kayuhan pertamamu?</h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#e6e8df]">Pilih program yang sesuai dan mulai perjalananmu bersama Kesit Management.</p>
           </div>
-          <Link href="/layanan" className="inline-flex w-fit shrink-0 items-center gap-12 bg-[#adff5f] px-7 py-5 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Lihat Layanan <span aria-hidden="true">↗</span></Link>
+          <Link href="/layanan" className="inline-flex w-fit shrink-0 items-center gap-12 bg-[#adff5f] px-7 py-5 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Lihat Layanan</Link>
         </div>
       </section>
     </main>

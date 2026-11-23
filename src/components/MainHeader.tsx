@@ -73,7 +73,7 @@ export default function MainHeader() {
                 <Link key={item.href} href={item.href} onClick={closeMenus} aria-current={isActive ? 'page' : undefined} className={`border-b-2 py-3 text-sm font-bold uppercase tracking-wide ${isActive ? 'border-[#adff5f] text-[#adff5f]' : 'border-transparent hover:border-[#adff5f]/50'}`}>{item.name}</Link>
               );
             })}
-            <Link href="/#daftar" className="inline-flex items-center gap-4 bg-[#adff5f] px-5 py-3.5 text-sm font-bold uppercase tracking-wide text-black transition-colors hover:bg-[#c3ff8a]">Bergabung <span aria-hidden="true">↗</span></Link>
+            <Link href="/#daftar" className="inline-flex items-center gap-4 bg-[#adff5f] px-5 py-3.5 text-sm font-bold uppercase tracking-wide text-black transition-colors hover:bg-[#c3ff8a]">Bergabung</Link>
           </nav>
           <button type="button" aria-label={mobileMenuOpen ? 'Tutup menu' : 'Buka menu'} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="flex h-11 w-11 shrink-0 items-center justify-center border border-[#adff5f]/40 text-[#adff5f] lg:hidden">
             <svg aria-hidden="true" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d={mobileMenuOpen ? 'M6 6l12 12M6 18L18 6' : 'M3 6h18M3 12h18M3 18h18'} /></svg>
