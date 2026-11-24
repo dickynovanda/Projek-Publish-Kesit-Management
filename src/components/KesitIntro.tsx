@@ -13,6 +13,7 @@ export default function KesitIntro() {
     setClosing(true);
     window.setTimeout(() => {
       sessionStorage.setItem('kesitIntroPlayed-v4', '1');
+      window.dispatchEvent(new Event('kesit-intro-finished'));
       document.documentElement.style.overflow = '';
       setVisible(false);
     }, 700);

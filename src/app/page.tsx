@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const heroPhotos = [
@@ -19,6 +20,17 @@ const gallery = [
 export default function Home() {
   const [activePhoto, setActivePhoto] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [heroReady, setHeroReady] = useState(false);
+
+  useEffect(() => {
+    const ready = () => setHeroReady(true);
+    window.addEventListener('kesit-intro-finished', ready);
+    const timer = window.setTimeout(ready, 6500);
+    return () => {
+      window.removeEventListener('kesit-intro-finished', ready);
+      window.clearTimeout(timer);
+    };
+  }, []);
 
   useEffect(() => {
     if (isPaused) return;
@@ -39,7 +51,7 @@ export default function Home() {
         </div>
         <div className="relative bg-transparent px-6 py-10 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
           <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
-            <p className="max-w-2xl text-4xl font-black italic uppercase leading-[1.05] tracking-[-0.04em] text-[#adff5f] sm:text-5xl xl:text-6xl">MAJU TANPA<br />ALING-ALING</p>
+            <motion.p initial="hidden" animate={heroReady ? 'visible' : 'hidden'} className="max-w-2xl text-4xl font-black italic uppercase leading-[1.05] tracking-[-0.04em] text-[#adff5f] sm:text-5xl xl:text-6xl"><motion.span custom={0} variants={{ hidden: { opacity: 0, y: 18 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.15, duration: 0.6 } }) }}>MAJU TANPA</motion.span><br /><motion.span custom={1} variants={{ hidden: { opacity: 0, y: 18 }, visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.15, duration: 0.6 } }) }}>ALING-ALING</motion.span></motion.p>
           <div className="ml-auto w-full max-w-md lg:pb-2">
             <p className="text-base leading-relaxed text-[#e6e8df] sm:text-lg">KESIT BEYOND, langkah yang selalu punya arah. Kami mendampingi perjalanan di airmu—dari belajar dasar hingga berani tampil di lintasan kecepatan.</p>
             <div className="mt-7 flex flex-wrap items-center gap-5">

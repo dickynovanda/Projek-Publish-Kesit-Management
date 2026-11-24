@@ -49,7 +49,7 @@ export default function MainHeader() {
       </div>
       <div className="border-b border-[#adff5f]/30 bg-[#1c2119] text-[#f3ecd8]">
         <div className="site-container relative flex min-h-24 items-center justify-between gap-4 lg:min-h-24 lg:pl-[360px]">
-          <Link href="/" onClick={closeMenus} aria-label="Kesit Management — Beranda" className="flex items-center gap-2 bg-black px-3 py-3 sm:gap-3 sm:px-4 lg:absolute lg:left-8 lg:top-[-48px] lg:h-[180px] lg:w-[290px] lg:flex-col lg:justify-center lg:gap-2 lg:rounded-b-[36px] lg:px-8 lg:shadow-xl">
+          <Link href="/" onClick={closeMenus} aria-label="Kesit Management — Beranda" className="flex items-center gap-2 rounded-xl bg-black px-3 py-3 sm:gap-3 sm:px-4 lg:absolute lg:left-8 lg:top-[-48px] lg:h-[180px] lg:w-[290px] lg:flex-col lg:justify-center lg:gap-2 lg:rounded-b-[36px] lg:px-8 lg:shadow-xl">
             <span className="relative block h-12 w-12 shrink-0 overflow-hidden lg:h-16 lg:w-16">
               <img alt="" width={1280} height={1280} className="h-full w-full scale-[1.7] object-contain" src="/images/logo-kesit-hijau.png" />
             </span>
