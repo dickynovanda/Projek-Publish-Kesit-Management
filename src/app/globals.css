@@ -28,6 +28,26 @@ body {
   scroll-margin-top: 24px;
 }
 
+.entrance-popup {
+  opacity: 0;
+  transform: translateY(14px) scale(.94);
+  transition: opacity 500ms ease var(--popup-delay, 0ms), transform 600ms cubic-bezier(.22, 1, .36, 1) var(--popup-delay, 0ms);
+}
+
+.entrance-popup-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entrance-popup,
+  .entrance-popup-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 :focus-visible {
   outline: 2px solid #adff5f;
   outline-offset: 5px;

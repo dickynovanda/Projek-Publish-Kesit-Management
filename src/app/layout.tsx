@@ -7,6 +7,7 @@ import MainHeader from '@/components/MainHeader';
 import MainFooter from '@/components/MainFooter';
 import PageTransition from '@/components/PageTransition';
 import KesitIntro from '@/components/KesitIntro';
+import EntranceMotion from '@/components/EntranceMotion';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -51,7 +52,7 @@ export default function RootLayout({
               ))}
             </div>
             <div id="page-scroll" className="relative z-10 h-full overflow-y-auto overscroll-contain">
-              <PageTransition>{children}</PageTransition>
+              <PageTransition><EntranceMotion>{children}</EntranceMotion></PageTransition>
               <MainFooter />
             </div>
           </div>
