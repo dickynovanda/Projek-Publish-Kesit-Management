@@ -6,7 +6,7 @@ export default function EntranceMotion({ children }: { children: React.ReactNode
   useEffect(() => {
     const root = document.getElementById('page-scroll');
     if (!root) return;
-    const targets = root.querySelectorAll<HTMLElement>('main a, main button');
+    const targets = root.querySelectorAll<HTMLElement>('main a, main button, main .about-card');
     const galleryImages = root.querySelectorAll<HTMLElement>('.gallery-popup');
     let previousScrollTop = root.scrollTop;
     const observer = new IntersectionObserver((entries) => {
@@ -24,6 +24,8 @@ export default function EntranceMotion({ children }: { children: React.ReactNode
     }, { root, threshold: 0.15 });
     targets.forEach((target) => { target.classList.add('entrance-popup'); observer.observe(target); });
     galleryImages.forEach((image) => { image.classList.add('entrance-popup'); observer.observe(image); });
+    // Observe after styles are applied so the initial hidden state is painted first.
+    requestAnimationFrame(() => galleryImages.forEach((image) => observer.observe(image)));
     return () => observer.disconnect();
   }, []);
   return children;

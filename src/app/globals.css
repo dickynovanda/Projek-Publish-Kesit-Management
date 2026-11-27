@@ -32,6 +32,7 @@ body {
   opacity: 0;
   transform: translateY(14px) scale(.94);
   transition: opacity 500ms ease var(--popup-delay, 0ms), transform 600ms cubic-bezier(.22, 1, .36, 1) var(--popup-delay, 0ms);
+  will-change: opacity, transform;
 }
 
 .entrance-popup-visible {
