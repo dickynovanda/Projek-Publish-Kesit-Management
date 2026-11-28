@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import SlideRightIn from '@/components/SlideRightIn';
+import { WordStagger } from '@/components/WordStagger';
 
 export default function TempatPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -58,12 +59,12 @@ export default function TempatPage() {
       <section className="relative bg-transparent h-[640px] sm:h-[640px] flex items-center pt-24 pb-28 overflow-hidden text-[#f3ecd8]" data-purpose="hero-section">
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-16">
           <SlideRightIn className="max-w-3xl">
-            <span className="text-[#adff5f] text-sm font-bold tracking-widest uppercase block mb-3">LAYANAN / TEMPAT LATIHAN</span>
+            <span className="text-[#adff5f] text-sm font-bold tracking-widest uppercase block mb-3"><WordStagger>LAYANAN / TEMPAT LATIHAN</WordStagger></span>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-[#f3ecd8]">
-              Ruang untuk setiap kayuhan.
+              <WordStagger>Ruang untuk setiap kayuhan.</WordStagger>
             </h1>
             <p className="text-[#e6e8df] text-base md:text-lg max-w-2xl font-normal leading-relaxed">
-              Pilihan kolam untuk belajar dengan nyaman. Sesuaikan lokasi dan jadwal dengan aktivitasmu.
+              <WordStagger>Pilihan kolam untuk belajar dengan nyaman. Sesuaikan lokasi dan jadwal dengan aktivitasmu.</WordStagger>
             </p>
           </SlideRightIn>
         </div>
@@ -74,8 +75,8 @@ export default function TempatPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <span className="text-sm font-bold tracking-widest text-[#e6e8df] uppercase">LOKASI KOLAM KESIT</span>
-            <h2 className="text-xl sm:text-3xl font-extrabold text-[#f3ecd8] mt-1">Geser untuk melihat tempat latihan lainnya</h2>
+            <span className="text-sm font-bold tracking-widest text-[#e6e8df] uppercase"><WordStagger>LOKASI KOLAM KESIT</WordStagger></span>
+            <h2 className="text-xl sm:text-3xl font-extrabold text-[#f3ecd8] mt-1"><WordStagger>Geser untuk melihat tempat latihan lainnya</WordStagger></h2>
           </div>
           <div className="flex gap-3 self-end sm:self-auto">
             <button
@@ -95,16 +96,16 @@ export default function TempatPage() {
           </div>
         </div>
 
-        <div className="relative w-full overflow-hidden">
+        <div className="relative w-full overflow-x-hidden overflow-y-visible">
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto pb-6 pt-2 px-1 scrollbar-none snap-x snap-mandatory"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+            className="place-scroller flex gap-4 overflow-x-auto overflow-y-visible pb-6 pt-2 px-1 scrollbar-none snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch', WebkitTapHighlightColor: 'transparent', touchAction: 'pan-x pan-y', overscrollBehavior: 'auto' }}
           >
             {locations.map((loc, index) => (
               <div
                 key={index}
-                className="min-w-[220px] max-w-[220px] flex-shrink-0 bg-transparent rounded-2xl border border-[#adff5f] overflow-hidden shadow-sm flex flex-col justify-between snap-start"
+                className="min-w-[220px] max-w-[220px] flex-shrink-0 bg-transparent rounded-2xl border border-[#adff5f] overflow-hidden shadow-sm flex flex-col justify-between snap-start place-card"
               >
                 <div>
                   <div className="h-32 w-full overflow-hidden bg-[#20241c]">

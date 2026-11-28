@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import SlideRightIn from '@/components/SlideRightIn';
+import { Pop, WordStagger } from '@/components/WordStagger';
 
 function formatBirth(dateStr: string, ageSuffix: string): string {
   const [y, m, d] = dateStr.split('-').map(Number);
@@ -87,12 +88,12 @@ export default function PelatihPage() {
       <section className="relative bg-transparent h-[640px] sm:h-[640px] flex items-center pt-24 pb-28 overflow-hidden text-[#f3ecd8]" data-purpose="hero-section">
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-16">
           <SlideRightIn className="max-w-3xl">
-            <span className="text-[#adff5f] text-sm font-bold tracking-widest uppercase block mb-3">LAYANAN / PELATIH</span>
+            <span className="text-[#adff5f] text-sm font-bold tracking-widest uppercase block mb-3"><WordStagger>LAYANAN / PELATIH</WordStagger></span>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-[#f3ecd8] text-balance">
-              Kenali pendamping lintasanmu.
+              <WordStagger>Kenali pendamping lintasanmu.</WordStagger>
             </h1>
             <p className="text-[#f3ecd8] text-base md:text-lg max-w-2xl font-normal leading-relaxed">
-              Belajar bersama pelatih profesional yang siap membimbing setiap langkah kecil menjadi kemajuan nyata.
+              <WordStagger>Belajar bersama pelatih profesional yang siap membimbing setiap langkah kecil menjadi kemajuan nyata.</WordStagger>
             </p>
           </SlideRightIn>
         </div>
@@ -101,8 +102,8 @@ export default function PelatihPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <span className="text-sm font-bold tracking-widest text-[#f3ecd8] uppercase">DAFTAR PELATIH KESIT</span>
-            <h2 className="text-xl sm:text-3xl font-extrabold text-[#f3ecd8] mt-1 text-balance">Geser untuk melihat pelatih lainnya</h2>
+            <span className="text-sm font-bold tracking-widest text-[#f3ecd8] uppercase"><WordStagger>DAFTAR PELATIH KESIT</WordStagger></span>
+            <h2 className="text-xl sm:text-3xl font-extrabold text-[#f3ecd8] mt-1 text-balance"><WordStagger>Geser untuk melihat pelatih lainnya</WordStagger></h2>
           </div>
           <div className="flex gap-3 self-end sm:self-auto">
             <button
@@ -122,16 +123,16 @@ export default function PelatihPage() {
           </div>
         </div>
 
-        <div className="relative w-full overflow-hidden">
+        <div className="relative w-full overflow-x-hidden overflow-y-visible">
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto pb-6 pt-2 px-1 scrollbar-none snap-x snap-mandatory"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch', WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation', overscrollBehavior: 'contain' }}
+            className="flex gap-4 overflow-x-auto overflow-y-visible pb-6 pt-2 px-1 scrollbar-none snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch', WebkitTapHighlightColor: 'transparent', touchAction: 'pan-x pan-y', overscrollBehavior: 'auto' }}
           >
             {coaches.map((coach, index) => (
               <div
                 key={index}
-                className="min-w-[210px] max-w-[210px] flex-shrink-0 bg-transparent rounded-2xl border border-[#3b4432] overflow-hidden shadow-sm hover:shadow-md transition-shadow snap-start flex flex-col justify-between"
+                className="min-w-[210px] max-w-[210px] flex-shrink-0 bg-transparent rounded-2xl border border-[#3b4432] overflow-hidden shadow-sm hover:shadow-md transition-shadow snap-start flex flex-col justify-between coach-card"
               >
                 <div>
                   <div className="h-36 w-full overflow-hidden bg-[#222222]">
