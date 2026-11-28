@@ -8,7 +8,7 @@ export default function EntranceMotion({ children }: { children: React.ReactNode
   useEffect(() => {
     const root = document.getElementById('page-scroll');
     if (!root) return;
-    const targets = root.querySelectorAll<HTMLElement>('main a, main button, main .about-card, main .coach-card, main .program-card, main .place-card');
+    const targets = root.querySelectorAll<HTMLElement>('main a:not(.hero-animated), main button, main .about-card, main .coach-card, main .program-card, main .place-card');
     const galleryImages = root.querySelectorAll<HTMLElement>('.gallery-popup');
     const coachCards = root.querySelectorAll<HTMLElement>('.coach-card');
     const programCards = root.querySelectorAll<HTMLElement>('.program-card');

@@ -53,20 +53,20 @@ export default function Home() {
       <section className="site-container pb-12 pt-12 sm:pb-16 lg:pt-24" aria-labelledby="hero-title">
         <div className="mb-7 flex items-center gap-3 sm:mb-10">
           <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#adff5f]" />
-          <motion.h1 id="hero-title" initial={{ opacity: 0, y: 12 }} animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }} transition={{ duration: 0.5 }} className="text-sm font-semibold leading-relaxed tracking-[0.12em] text-[#adff5f] sm:text-base"><WordStagger active={heroReady}>by KESIT MANAGEMENT</WordStagger></motion.h1>
+          <motion.h1 data-hero-animation id="hero-title" initial={{ opacity: 0, y: 12 }} animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }} transition={{ duration: 0.5 }} className="text-sm font-semibold leading-relaxed tracking-[0.12em] text-[#adff5f] sm:text-base"><WordStagger key={heroReady ? 'by-ready' : 'by-waiting'} active={heroReady} playOnActivate>by KESIT MANAGEMENT</WordStagger></motion.h1>
         </div>
-        <div className="relative bg-transparent px-2 py-10 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
+        <motion.div initial={{ opacity: 0 }} animate={heroReady ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 0.25 }} className="relative bg-transparent px-2 py-10 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
           <div className="grid min-w-0 items-center gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-12">
-            <motion.p className="w-full max-w-full overflow-visible text-[clamp(1.9rem,9vw,2.7rem)] font-black italic uppercase leading-[1.02] tracking-[-0.07em] text-[#adff5f] sm:max-w-none sm:text-5xl sm:tracking-[-0.04em] lg:text-6xl xl:text-7xl" aria-label="MAJU TANPA ALING-ALING"><WordStagger active={heroReady}>MAJU TANPA  </WordStagger><br /><WordStagger active={heroReady}> ALING-ALING </WordStagger></motion.p>
-          <div className="ml-auto w-full max-w-md lg:pb-2">
-            <p className="text-base leading-relaxed text-[#e6e8df] sm:text-lg"><span className="block"><WordStagger key={`hero-copy-1-${heroReady}`} active={heroReady}>KESIT BEYOND, langkah yang selalu punya arah.</WordStagger></span><span className="mt-2 block"><WordStagger key={`hero-copy-2-${heroReady}`} active={heroReady}>Kami mendampingi perjalanan di airmu—dari belajar dasar hingga berani tampil di lintasan kecepatan.</WordStagger></span></p>
+            <motion.p data-hero-animation className="w-full max-w-full overflow-visible text-[clamp(1.9rem,9vw,2.7rem)] font-black italic uppercase leading-[1.02] tracking-[-0.07em] text-[#adff5f] sm:max-w-none sm:text-5xl sm:tracking-[-0.04em] lg:text-6xl xl:text-7xl" aria-label="MAJU TANPA ALING-ALING"><WordStagger key={heroReady ? 'title-ready' : 'title-waiting'} active={heroReady} playOnActivate>MAJU TANPA</WordStagger><br /><WordStagger key={heroReady ? 'subtitle-ready' : 'subtitle-waiting'} active={heroReady} playOnActivate>ALING-ALING</WordStagger></motion.p>
+          <div data-hero-animation className="ml-auto w-full max-w-md lg:pb-2">
+            <p className="text-base leading-relaxed text-[#e6e8df] sm:text-lg"><span className="block"><WordStagger key={`hero-copy-1-${heroReady}`} active={heroReady} playOnActivate>KESIT BEYOND, langkah yang selalu punya arah.</WordStagger></span><span className="mt-2 block"><WordStagger key={`hero-copy-2-${heroReady}`} active={heroReady} playOnActivate>Kami mendampingi perjalanan di airmu—dari belajar dasar hingga berani tampil di lintasan kecepatan.</WordStagger></span></p>
             <div className="mt-7 flex flex-wrap items-center gap-5">
-              <Pop active={heroReady} className="rounded-3xl"><Link href="#daftar" className="inline-flex items-center gap-6 rounded-3xl bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Mulai Bersama Kesit</Link></Pop>
+              <Pop key={heroReady ? 'button-ready' : 'button-waiting'} active={heroReady} playOnActivate className="rounded-3xl"><Link href="#daftar" className="hero-animated inline-flex items-center gap-6 rounded-3xl bg-[#adff5f] px-6 py-4 text-sm font-bold text-black transition-colors hover:bg-[#c4ff91]">Mulai Bersama Kesit</Link></Pop>
 
             </div>
           </div>
           </div>
-        </div>
+        </motion.div>
         <figure className="relative mt-10 overflow-hidden bg-transparent sm:mt-14">
           <div className="hero-photo-gradient h-[340px] sm:h-[460px] lg:h-[560px]">
             {heroPhotos.map(({ image, alt }, index) => (
